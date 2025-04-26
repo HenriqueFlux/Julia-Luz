@@ -7,28 +7,35 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
+      padding: 20px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(to right, #fbd3e9, #bb377d);
       color: #fff;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: flex-start;
       align-items: center;
-      height: 100vh;
-      overflow: hidden;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .spotify {
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 20px;
     }
     .card {
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
       border-radius: 20px;
-      padding: 30px;
+      padding: 20px;
       text-align: center;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      width: 100%;
       max-width: 400px;
     }
     .photo {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       object-fit: cover;
       border-radius: 50%;
       margin: 10px;
@@ -45,9 +52,11 @@
     .buttons {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 20px;
       margin-top: 20px;
       position: relative;
+      min-height: 100px;
     }
     button {
       background: #fff;
@@ -55,23 +64,47 @@
       padding: 12px 24px;
       border: none;
       border-radius: 30px;
-      font-size: 16px;
       cursor: pointer;
-      transition: background 0.3s;
+      font-size: 16px;
       position: relative;
-    }
+      transition: background 0.3s;
+      text-align: center;
+      width: 120px; /* <<< define largura fixa */
+}
     button:hover {
       background: #fce4ec;
+    }
+    @media (max-width: 480px) {
+      .photo {
+        width: 80px;
+        height: 80px;
+      }
+      .heart {
+        font-size: 30px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      p {
+        font-size: 16px;
+      }
+      button {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="spotify">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/10NTKh8P6QVJZaXhUifzrj?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
   <div class="card">
     <img id="fotoEla" class="photo" src="imagens/1.png" alt="Ela">
     <div class="heart">❤️</div>
     <img id="fotoEu" class="photo" src="imagens/2.png" alt="Você">
-    <h2>Quer ir comer um pastelzinho comigo?</h2>
-    <p style="font-weight: bold;">Prometo pagar e não pedir um boquete em troca 🙏</p>
+    <h2>Que tal a gente matar a fome... juntos?</h2>
+    <p>Prometo escolher um lugar que tenha a sua sobremesa favorita 🍰</p>
     <div class="buttons">
       <button onclick="respostaSim()">Sim 😍</button>
       <button id="naoBtn">Não 😢</button>
